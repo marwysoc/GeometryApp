@@ -98,73 +98,17 @@ public class GeometryApp {
 		System.out.println("Perimeter: " + oldPerimeter);
 
 		if (activeShape instanceof Ellipse) {
-			Ellipse.askForParams();
-			getTwoValues();
-			while (a <= 0 || b <= 0) {
-				Shape.nonZeroValues();
-				Ellipse.askForParams();
-				getTwoValues();
-				continue;
-			}
-			((Ellipse) activeShape).setSemiMajorAxis(a);
-			((Ellipse) activeShape).setSemiMinorAxis(b);
+			modifyEllipse(activeShape);
 		} else if (activeShape instanceof Circle) {
-			Circle.askForParams();
-			getOneValue();
-			while (a <= 0) {
-				Shape.nonZeroValues();
-				Circle.askForParams();
-				getOneValue();
-				continue;
-			}
-			((Circle) activeShape).setRadius(a);
+			modifyCircle(activeShape);
 		} else if (activeShape instanceof Square) {
-			Square.askForParams();
-			getOneValue();
-			while (a <= 0) {
-				Shape.nonZeroValues();
-				Square.askForParams();
-				getOneValue();
-				continue;
-			}
-			((Square) activeShape).setEdge(a);
+			modifySquare(activeShape);
 		} else if (activeShape instanceof Rectangle) {
-			Rectangle.askForParams();
-			getTwoValues();
-			while (a <= 0 || b <= 0) {
-				Shape.nonZeroValues();
-				Rectangle.askForParams();
-				getTwoValues();
-				continue;
-			}
-			((Rectangle) activeShape).setHeight(a);
-			((Rectangle) activeShape).setWidth(b);
+			modifyRectangle(activeShape);
 		} else if (activeShape instanceof Triangle) {
-			Triangle.askForParams();
-			getThreeValues();
-			while (a <= 0 || b <= 0 || c <= 0) {
-				Shape.nonZeroValues();
-				Triangle.askForParams();
-				getThreeValues();
-				continue;
-			}
-			while (Triangle.checkTriangle(a,b,c)){
-				getThreeValues();
-				continue;
-			}
-			((Triangle) activeShape).setEdgeA(a);
-			((Triangle) activeShape).setEdgeB(b);
-			((Triangle) activeShape).setEdgeC(c);
+			modifyTriangle(activeShape);
 		} else if (activeShape instanceof Hexagon){
-			Hexagon.askForParams();
-			getOneValue();
-			while (a <= 0) {
-				Shape.nonZeroValues();
-				Hexagon.askForParams();
-				getOneValue();
-				continue;
-			}
-			((Hexagon) activeShape).setEdge(a);
+			modifyHexagon(activeShape);
 		}
 
 		System.out.println("Old shape: ");
@@ -181,6 +125,87 @@ public class GeometryApp {
 		System.out.println("============================");
 
 	}
+
+	private void modifyHexagon(Shape activeShape) {
+		Hexagon.askForParams();
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Hexagon.askForParams();
+			getOneValue();
+			continue;
+		}
+		((Hexagon) activeShape).setEdge(a);
+	}
+
+	private void modifyTriangle(Shape activeShape) {
+		Triangle.askForParams();
+		getThreeValues();
+		while (a <= 0 || b <= 0 || c <= 0) {
+			Shape.nonZeroValues();
+			Triangle.askForParams();
+			getThreeValues();
+			continue;
+		}
+		while (Triangle.checkTriangle(a,b,c)){
+			getThreeValues();
+			continue;
+		}
+		((Triangle) activeShape).setEdgeA(a);
+		((Triangle) activeShape).setEdgeB(b);
+		((Triangle) activeShape).setEdgeC(c);
+	}
+
+	private void modifyRectangle(Shape activeShape) {
+		Rectangle.askForParams();
+		getTwoValues();
+		while (a <= 0 || b <= 0) {
+			Shape.nonZeroValues();
+			Rectangle.askForParams();
+			getTwoValues();
+			continue;
+		}
+		((Rectangle) activeShape).setHeight(a);
+		((Rectangle) activeShape).setWidth(b);
+	}
+
+	private void modifySquare(Shape activeShape) {
+		Square.askForParams();
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Square.askForParams();
+			getOneValue();
+			continue;
+		}
+		((Square) activeShape).setEdge(a);
+	}
+
+	private void modifyCircle(Shape activeShape) {
+		Circle.askForParams();
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Circle.askForParams();
+			getOneValue();
+			continue;
+		}
+		((Circle) activeShape).setRadius(a);
+	}
+
+	private void modifyEllipse(Shape activeShape) {
+		Ellipse.askForParams();
+		getTwoValues();
+		while (a <= 0 || b <= 0) {
+			Shape.nonZeroValues();
+			Ellipse.askForParams();
+			getTwoValues();
+			continue;
+		}
+		((Ellipse) activeShape).setSemiMajorAxis(a);
+		((Ellipse) activeShape).setSemiMinorAxis(b);
+	}
+
 
 	private Ellipse createNewEllipse() {
 		Ellipse.askForParams();
