@@ -36,6 +36,10 @@ public class Triangle implements Shape {
 		return edgeA + edgeB + edgeC;
 	}
 
+	public static void askForParams(){
+		System.out.println("Please provide three edge lengths:");
+	}
+
 	public void setEdgeA(Double edgeA) {
 		this.edgeA = edgeA;
 	}

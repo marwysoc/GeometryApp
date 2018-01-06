@@ -20,8 +20,13 @@ public class Square extends Rectangle {
 		setDimension(width);
 	}
 
+	public static void askForParams(){
+		System.out.println("Please provide the edge length:");
+	}
+
 	public void setDimension(Double dimension) {
 		super.setHeight(dimension);
 		super.setWidth(dimension);
 	}
+
 }

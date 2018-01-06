@@ -20,6 +20,10 @@ public class Circle extends Ellipse {
 		setRadius(semiMinorAxis);
 	}
 
+	public static void askForParams(){
+		System.out.println("Please provide the radius for the circle:");
+	}
+
 	public void setRadius(Double radius) {
 		super.setSemiMajorAxis(radius);
 		super.setSemiMinorAxis(radius);

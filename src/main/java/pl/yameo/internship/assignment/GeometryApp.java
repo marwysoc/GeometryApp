@@ -94,21 +94,21 @@ public class GeometryApp {
 		System.out.println("Perimeter: " + oldPerimeter);
 
 		if (activeShape instanceof Ellipse) {
-			System.out.println("Please provide two semi-axis lengths (major, minor):");
+			Ellipse.askForParams();
 			((Ellipse) activeShape).setSemiMajorAxis(readDouble());
 			((Ellipse) activeShape).setSemiMinorAxis(readDouble());
 		} else if (activeShape instanceof Circle) {
-			System.out.println("Please provide the radius for the circle:");
+			Circle.askForParams();
 			((Circle) activeShape).setRadius(readDouble());
 		} else if (activeShape instanceof Square) {
-			System.out.println("Please provide the edge length:");
+			Square.askForParams();
 			((Square) activeShape).setDimension(readDouble());
 		} else if (activeShape instanceof Rectangle) {
-			System.out.println("Please provide two edge lengths (height, width):");
+			Rectangle.askForParams();
 			((Rectangle) activeShape).setHeight(readDouble());
 			((Rectangle) activeShape).setWidth(readDouble());
 		} else if (activeShape instanceof Triangle) {
-			System.out.println("Please provide three edge lengths:");
+			Triangle.askForParams();
 			((Triangle) activeShape).setEdgeA(readDouble());
 			((Triangle) activeShape).setEdgeB(readDouble());
 			((Triangle) activeShape).setEdgeC(readDouble());
@@ -130,27 +130,27 @@ public class GeometryApp {
 	}
 
 	private Ellipse createNewEllipse() {
-		System.out.println("Please provide two semi-axis lengths (major, minor):");
+		Ellipse.askForParams();
 		return new Ellipse(readDouble(), readDouble());
 	}
 
 	private Rectangle createNewRectangle() {
-		System.out.println("Please provide two edge lengths (height, width):");
+		Rectangle.askForParams();
 		return new Rectangle(readDouble(), readDouble());
 	}
 
 	private Circle createNewCircle() {
-		System.out.println("Please provide the radius for the circle:");
+		Circle.askForParams();
 		return new Circle(readDouble());
 	}
 
 	private Square createNewSquare() {
-		System.out.println("Please provide the edge length:");
+		Square.askForParams();
 		return new Square(readDouble());
 	}
 
 	private Triangle createNewTriangle() {
-		System.out.println("Please provide three edge lengths:");
+		Triangle.askForParams();
 		return new Triangle(readDouble(), readDouble(), readDouble());
 	}
 

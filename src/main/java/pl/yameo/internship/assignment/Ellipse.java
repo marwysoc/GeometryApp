@@ -32,6 +32,10 @@ public class Ellipse implements Shape {
 		return Math.PI * semiMajorAxis * semiMinorAxis;
 	}
 
+	public static void askForParams(){
+		System.out.println("Please provide two semi-axis lengths (major, minor):");
+	}
+
 	public void setSemiMajorAxis(Double semiMajorAxis) {
 		this.semiMajorAxis = semiMajorAxis;
 	}

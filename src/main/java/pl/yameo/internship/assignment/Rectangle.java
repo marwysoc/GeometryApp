@@ -32,6 +32,10 @@ public class Rectangle implements Shape {
 		return 2 * (height + width);
 	}
 
+	public static void askForParams() {
+		System.out.println("Please provide two edge lengths (height, width):");
+	}
+
 	public void setHeight(Double height) {
 		this.height = height;
 	}
@@ -39,4 +43,5 @@ public class Rectangle implements Shape {
 	public void setWidth(Double width) {
 		this.width = width;
 	}
+
 }
