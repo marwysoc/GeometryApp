@@ -1,8 +1,13 @@
 package pl.yameo.internship.assignment;
 
-public class Square extends Rectangle {
-	public Square(Double dimension) {
-		super(dimension, dimension);
+import java.util.Arrays;
+import java.util.List;
+
+public class Square implements Shape {
+	private Double edge = 0.0;
+
+	public Square(Double edge) {
+		this.edge = edge;
 	}
 
 	@Override
@@ -11,22 +16,24 @@ public class Square extends Rectangle {
 	}
 
 	@Override
-	public void setHeight(Double height) {
-		setDimension(height);
+	public List<Double> listDimensions() { return Arrays.asList(edge); }
+
+	@Override
+	public Double calculateArea() {
+		return edge*edge;
 	}
 
 	@Override
-	public void setWidth(Double width) {
-		setDimension(width);
+	public Double calculatePerimeter() {
+		return 4*edge;
 	}
 
 	public static void askForParams(){
 		System.out.println("Please provide the edge length:");
 	}
 
-	public void setDimension(Double dimension) {
-		super.setHeight(dimension);
-		super.setWidth(dimension);
+	public void setEdge(Double edge){
+		this.edge = edge;
 	}
 
 }

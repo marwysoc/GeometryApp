@@ -105,7 +105,7 @@ public class GeometryApp {
 			((Circle) activeShape).setRadius(readDouble());
 		} else if (activeShape instanceof Square) {
 			Square.askForParams();
-			((Square) activeShape).setDimension(readDouble());
+			((Square) activeShape).setEdge(readDouble());
 		} else if (activeShape instanceof Rectangle) {
 			Rectangle.askForParams();
 			((Rectangle) activeShape).setHeight(readDouble());
