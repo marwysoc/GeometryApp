@@ -113,9 +113,18 @@ public class GeometryApp {
 			((Rectangle) activeShape).setWidth(readDouble());
 		} else if (activeShape instanceof Triangle) {
 			Triangle.askForParams();
-			((Triangle) activeShape).setEdgeA(readDouble());
-			((Triangle) activeShape).setEdgeB(readDouble());
-			((Triangle) activeShape).setEdgeC(readDouble());
+			a = readDouble();
+			b = readDouble();
+			c = readDouble();
+			while (Triangle.checkTriangle(a,b,c)){
+				a = readDouble();
+				b = readDouble();
+				c = readDouble();
+				continue;
+			}
+			((Triangle) activeShape).setEdgeA(a);
+			((Triangle) activeShape).setEdgeB(b);
+			((Triangle) activeShape).setEdgeC(c);
 		} else if (activeShape instanceof Hexagon){
 			Hexagon.askForParams();
 			((Hexagon) activeShape).setEdge(readDouble());
