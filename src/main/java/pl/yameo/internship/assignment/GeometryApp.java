@@ -50,6 +50,7 @@ public class GeometryApp {
 		System.out.println("3) Circle");
 		System.out.println("4) Square");
 		System.out.println("5) Triangle");
+		System.out.println("6) Hexagon");
 		System.out.println("0) Back");
 		int option = readInteger();
 
@@ -63,6 +64,8 @@ public class GeometryApp {
 			return createNewSquare();
 		} else if (option == 5) {
 			return createNewTriangle();
+		} else if (option == 6) {
+			return createNewHexagon();
 		} else {
 	 		return null;
 		}
@@ -112,6 +115,9 @@ public class GeometryApp {
 			((Triangle) activeShape).setEdgeA(readDouble());
 			((Triangle) activeShape).setEdgeB(readDouble());
 			((Triangle) activeShape).setEdgeC(readDouble());
+		} else if (activeShape instanceof Hexagon){
+			Hexagon.askForParams();
+			((Hexagon) activeShape).setEdge(readDouble());
 		}
 
 		System.out.println("Old shape: ");
@@ -152,6 +158,11 @@ public class GeometryApp {
 	private Triangle createNewTriangle() {
 		Triangle.askForParams();
 		return new Triangle(readDouble(), readDouble(), readDouble());
+	}
+
+	private Hexagon createNewHexagon() {
+		Hexagon.askForParams();
+		return new Hexagon(readDouble());
 	}
 
 	private Integer readInteger() {
