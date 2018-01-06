@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class GeometryApp {
 	private Scanner scanner;
 	private List<Shape> shapes = new ArrayList<>();
+	private Double a,b,c;
 
 	public GeometryApp(Scanner scanner) {
 		this.scanner = scanner;
@@ -157,7 +158,16 @@ public class GeometryApp {
 
 	private Triangle createNewTriangle() {
 		Triangle.askForParams();
-		return new Triangle(readDouble(), readDouble(), readDouble());
+		a = readDouble();
+		b = readDouble();
+		c = readDouble();
+		while (Triangle.checkTriangle(a,b,c)){
+			a = readDouble();
+			b = readDouble();
+			c = readDouble();
+			continue;
+		}
+		return new Triangle(a,b,c);
 	}
 
 	private Hexagon createNewHexagon() {

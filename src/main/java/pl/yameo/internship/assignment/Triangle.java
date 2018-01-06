@@ -2,6 +2,7 @@ package pl.yameo.internship.assignment;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Triangle implements Shape {
 	private Double edgeA = 0.0;
@@ -50,5 +51,16 @@ public class Triangle implements Shape {
 
 	public void setEdgeC(Double edgeC) {
 		this.edgeC = edgeC;
+	}
+
+	public static boolean checkTriangle(Double edgeA, Double edgeB, Double edgeC) {
+		if (edgeA + edgeB <= edgeC || edgeA + edgeC <= edgeB || edgeB + edgeC <= edgeA)
+		{
+			System.out.println("You can not create a triangle from given dimensions.");
+			askForParams();
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
