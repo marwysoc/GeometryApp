@@ -99,27 +99,57 @@ public class GeometryApp {
 
 		if (activeShape instanceof Ellipse) {
 			Ellipse.askForParams();
-			((Ellipse) activeShape).setSemiMajorAxis(readDouble());
-			((Ellipse) activeShape).setSemiMinorAxis(readDouble());
+			getTwoValues();
+			while (a <= 0 || b <= 0) {
+				Shape.nonZeroValues();
+				Ellipse.askForParams();
+				getTwoValues();
+				continue;
+			}
+			((Ellipse) activeShape).setSemiMajorAxis(a);
+			((Ellipse) activeShape).setSemiMinorAxis(b);
 		} else if (activeShape instanceof Circle) {
 			Circle.askForParams();
-			((Circle) activeShape).setRadius(readDouble());
+			getOneValue();
+			while (a <= 0) {
+				Shape.nonZeroValues();
+				Circle.askForParams();
+				getOneValue();
+				continue;
+			}
+			((Circle) activeShape).setRadius(a);
 		} else if (activeShape instanceof Square) {
 			Square.askForParams();
-			((Square) activeShape).setEdge(readDouble());
+			getOneValue();
+			while (a <= 0) {
+				Shape.nonZeroValues();
+				Square.askForParams();
+				getOneValue();
+				continue;
+			}
+			((Square) activeShape).setEdge(a);
 		} else if (activeShape instanceof Rectangle) {
 			Rectangle.askForParams();
-			((Rectangle) activeShape).setHeight(readDouble());
-			((Rectangle) activeShape).setWidth(readDouble());
+			getTwoValues();
+			while (a <= 0 || b <= 0) {
+				Shape.nonZeroValues();
+				Rectangle.askForParams();
+				getTwoValues();
+				continue;
+			}
+			((Rectangle) activeShape).setHeight(a);
+			((Rectangle) activeShape).setWidth(b);
 		} else if (activeShape instanceof Triangle) {
 			Triangle.askForParams();
-			a = readDouble();
-			b = readDouble();
-			c = readDouble();
+			getThreeValues();
+			while (a <= 0 || b <= 0 || c <= 0) {
+				Shape.nonZeroValues();
+				Triangle.askForParams();
+				getThreeValues();
+				continue;
+			}
 			while (Triangle.checkTriangle(a,b,c)){
-				a = readDouble();
-				b = readDouble();
-				c = readDouble();
+				getThreeValues();
 				continue;
 			}
 			((Triangle) activeShape).setEdgeA(a);
@@ -127,7 +157,14 @@ public class GeometryApp {
 			((Triangle) activeShape).setEdgeC(c);
 		} else if (activeShape instanceof Hexagon){
 			Hexagon.askForParams();
-			((Hexagon) activeShape).setEdge(readDouble());
+			getOneValue();
+			while (a <= 0) {
+				Shape.nonZeroValues();
+				Hexagon.askForParams();
+				getOneValue();
+				continue;
+			}
+			((Hexagon) activeShape).setEdge(a);
 		}
 
 		System.out.println("Old shape: ");
@@ -147,33 +184,63 @@ public class GeometryApp {
 
 	private Ellipse createNewEllipse() {
 		Ellipse.askForParams();
-		return new Ellipse(readDouble(), readDouble());
+		getTwoValues();
+		while (a <= 0 || b <= 0) {
+			Shape.nonZeroValues();
+			Ellipse.askForParams();
+			getTwoValues();
+			continue;
+		}
+		return new Ellipse(a, b);
 	}
 
 	private Rectangle createNewRectangle() {
 		Rectangle.askForParams();
-		return new Rectangle(readDouble(), readDouble());
+		getTwoValues();
+		while (a <= 0 || b <= 0) {
+			Shape.nonZeroValues();
+			Rectangle.askForParams();
+			getTwoValues();
+			continue;
+		}
+		return new Rectangle(a, b);
 	}
 
 	private Circle createNewCircle() {
 		Circle.askForParams();
-		return new Circle(readDouble());
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Circle.askForParams();
+			getOneValue();
+			continue;
+		}
+		return new Circle(a);
 	}
 
 	private Square createNewSquare() {
 		Square.askForParams();
-		return new Square(readDouble());
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Square.askForParams();
+			getOneValue();
+			continue;
+		}
+		return new Square(a);
 	}
 
 	private Triangle createNewTriangle() {
 		Triangle.askForParams();
-		a = readDouble();
-		b = readDouble();
-		c = readDouble();
+		getThreeValues();
+		while (a <= 0 || b <= 0 || c <= 0) {
+			Shape.nonZeroValues();
+			Triangle.askForParams();
+			getThreeValues();
+			continue;
+		}
 		while (Triangle.checkTriangle(a,b,c)){
-			a = readDouble();
-			b = readDouble();
-			c = readDouble();
+			getThreeValues();
 			continue;
 		}
 		return new Triangle(a,b,c);
@@ -181,7 +248,30 @@ public class GeometryApp {
 
 	private Hexagon createNewHexagon() {
 		Hexagon.askForParams();
-		return new Hexagon(readDouble());
+		getOneValue();
+		while (a <= 0) {
+			Shape.nonZeroValues();
+			Hexagon.askForParams();
+			getOneValue();
+			continue;
+		}
+		return new Hexagon(a);
+	}
+
+
+	private void getOneValue(){
+		a = readDouble();
+	}
+
+	private void getTwoValues(){
+		a = readDouble();
+		b = readDouble();
+	}
+
+	private void getThreeValues(){
+		a = readDouble();
+		b = readDouble();
+		c = readDouble();
 	}
 
 	private Integer readInteger() {

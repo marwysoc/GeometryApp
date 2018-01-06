@@ -8,4 +8,7 @@ public interface Shape {
 	List<Double> listDimensions();
 	Double calculateArea();
 	Double calculatePerimeter();
+	static void nonZeroValues() {
+		System.out.println("Values can not be negative or zero!");
+	}
 }
