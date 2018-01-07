@@ -1,5 +1,6 @@
 package pl.yameo.internship.assignment;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class GeometryApp {
 		System.out.println("3) Modify one of the shapes from the list");
 		System.out.println("0) Exit");
 
-		int option = readInteger();
+		int option = DataReader.readInteger(scanner);
 		if (option == 0) {
 			return false;
 		} else if (option == 1) {
@@ -55,7 +56,7 @@ public class GeometryApp {
 		System.out.println("5) Triangle");
 		System.out.println("6) Hexagon");
 		System.out.println("0) Back");
-		int option = readInteger();
+		int option = DataReader.readInteger(scanner);
 
 	 	if (option == 1) {
 			return createNewEllipse();
@@ -95,7 +96,7 @@ public class GeometryApp {
 	private void modifyShape() {
 		listShapes();
 		System.out.println("Please choose the index of the shape you want to modify (1-" + shapes.size() + "): ");
-		int index = readInteger();
+		int index = DataReader.readInteger(scanner);
 		Shape activeShape = shapes.get(index - 1);
 		List<Double> oldDimensions = activeShape.listDimensions();
 		Double oldPerimeter = activeShape.calculatePerimeter();
@@ -137,11 +138,11 @@ public class GeometryApp {
 
 	private void modifyHexagon(Shape activeShape) {
 		Hexagon.askForParams();
-		getOneValue();
+		a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Hexagon.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Hexagon) activeShape).setEdge(a);
@@ -149,15 +150,21 @@ public class GeometryApp {
 
 	private void modifyTriangle(Shape activeShape) {
 		Triangle.askForParams();
-		getThreeValues();
+		a = DataReader.readDouble(scanner);
+		b = DataReader.readDouble(scanner);
+		c = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0 || c <= 0) {
 			Shape.nonZeroValues();
 			Triangle.askForParams();
-			getThreeValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
+            c = DataReader.readDouble(scanner);
 			continue;
 		}
 		while (Triangle.checkTriangle(a,b,c)){
-			getThreeValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
+            c = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Triangle) activeShape).setEdgeA(a);
@@ -167,11 +174,13 @@ public class GeometryApp {
 
 	private void modifyRectangle(Shape activeShape) {
 		Rectangle.askForParams();
-		getTwoValues();
+        a = DataReader.readDouble(scanner);
+        b = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0) {
 			Shape.nonZeroValues();
 			Rectangle.askForParams();
-			getTwoValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Rectangle) activeShape).setHeight(a);
@@ -180,11 +189,11 @@ public class GeometryApp {
 
 	private void modifySquare(Shape activeShape) {
 		Square.askForParams();
-		getOneValue();
+        a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Square.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Square) activeShape).setEdge(a);
@@ -192,11 +201,11 @@ public class GeometryApp {
 
 	private void modifyCircle(Shape activeShape) {
 		Circle.askForParams();
-		getOneValue();
+        a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Circle.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Circle) activeShape).setRadius(a);
@@ -204,11 +213,13 @@ public class GeometryApp {
 
 	private void modifyEllipse(Shape activeShape) {
 		Ellipse.askForParams();
-		getTwoValues();
+        a = DataReader.readDouble(scanner);
+        b = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0) {
 			Shape.nonZeroValues();
 			Ellipse.askForParams();
-			getTwoValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
 			continue;
 		}
 		((Ellipse) activeShape).setSemiMajorAxis(a);
@@ -218,11 +229,13 @@ public class GeometryApp {
 
 	private Ellipse createNewEllipse() {
 		Ellipse.askForParams();
-		getTwoValues();
+        a = DataReader.readDouble(scanner);
+        b = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0) {
 			Shape.nonZeroValues();
 			Ellipse.askForParams();
-			getTwoValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Ellipse(a, b);
@@ -230,11 +243,13 @@ public class GeometryApp {
 
 	private Rectangle createNewRectangle() {
 		Rectangle.askForParams();
-		getTwoValues();
+        a = DataReader.readDouble(scanner);
+        b = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0) {
 			Shape.nonZeroValues();
 			Rectangle.askForParams();
-			getTwoValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Rectangle(a, b);
@@ -242,11 +257,11 @@ public class GeometryApp {
 
 	private Circle createNewCircle() {
 		Circle.askForParams();
-		getOneValue();
+        a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Circle.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Circle(a);
@@ -254,11 +269,11 @@ public class GeometryApp {
 
 	private Square createNewSquare() {
 		Square.askForParams();
-		getOneValue();
+        a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Square.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Square(a);
@@ -266,15 +281,21 @@ public class GeometryApp {
 
 	private Triangle createNewTriangle() {
 		Triangle.askForParams();
-		getThreeValues();
+        a = DataReader.readDouble(scanner);
+        b = DataReader.readDouble(scanner);
+        c = DataReader.readDouble(scanner);
 		while (a <= 0 || b <= 0 || c <= 0) {
 			Shape.nonZeroValues();
 			Triangle.askForParams();
-			getThreeValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
+            c = DataReader.readDouble(scanner);
 			continue;
 		}
 		while (Triangle.checkTriangle(a,b,c)){
-			getThreeValues();
+            a = DataReader.readDouble(scanner);
+            b = DataReader.readDouble(scanner);
+            c = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Triangle(a,b,c);
@@ -282,55 +303,14 @@ public class GeometryApp {
 
 	private Hexagon createNewHexagon() {
 		Hexagon.askForParams();
-		getOneValue();
+        a = DataReader.readDouble(scanner);
 		while (a <= 0) {
 			Shape.nonZeroValues();
 			Hexagon.askForParams();
-			getOneValue();
+            a = DataReader.readDouble(scanner);
 			continue;
 		}
 		return new Hexagon(a);
 	}
 
-
-	private void getOneValue(){
-		a = readDouble();
-	}
-
-	private void getTwoValues(){
-		a = readDouble();
-		b = readDouble();
-	}
-
-	private void getThreeValues(){
-		a = readDouble();
-		b = readDouble();
-		c = readDouble();
-	}
-
-	private Integer readInteger() {
-		Integer value = null;
-		while (value == null) {
-			if (scanner.hasNextInt()) {
-				value = scanner.nextInt();
-			} else {
-				scanner.next();
-			}
-		}
-
-		return value;
-	}
-
-	private Double readDouble() {
-		Double value = null;
-		while (value == null) {
-			if (scanner.hasNextDouble()) {
-				value = scanner.nextDouble();
-			} else {
-				scanner.next();
-			}
-		}
-
-		return value;
-	}
 }
