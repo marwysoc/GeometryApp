@@ -7,94 +7,29 @@ import java.util.Scanner;
 public class ShapeCreator {
 
     public static Ellipse createNewEllipse(Scanner scanner) {
-        Double a,b;
-        Ellipse.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-        while (a <= 0 || b <= 0) {
-            Shape.nonZeroValues();
-            Ellipse.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Ellipse(a, b);
+        Double[] dimens = DataValidator.validateEllipse(scanner);
+        return new Ellipse(dimens[0], dimens[1]);
     }
 
     public static Rectangle createNewRectangle(Scanner scanner) {
-        Double a,b;
-        Rectangle.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-        while (a <= 0 || b <= 0) {
-            Shape.nonZeroValues();
-            Rectangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Rectangle(a, b);
+        Double[] dimens = DataValidator.validateRectangle(scanner);
+        return new Rectangle(dimens[0], dimens[1]);
     }
 
     public static Circle createNewCircle(Scanner scanner) {
-        Double a;
-        Circle.askForParams();
-        a = DataReader.readDouble(scanner);
-        while (a <= 0) {
-            Shape.nonZeroValues();
-            Circle.askForParams();
-            a = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Circle(a);
+        return new Circle(DataValidator.validateCircle(scanner));
     }
 
     public static Square createNewSquare(Scanner scanner) {
-        Double a;
-        Square.askForParams();
-        a = DataReader.readDouble(scanner);
-        while (a <= 0) {
-            Shape.nonZeroValues();
-            Square.askForParams();
-            a = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Square(a);
+        return new Square(DataValidator.validateSquare(scanner));
     }
 
     public static Triangle createNewTriangle(Scanner scanner) {
-        Double a,b,c;
-        Triangle.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-        c = DataReader.readDouble(scanner);
-        while (a <= 0 || b <= 0 || c <= 0) {
-            Shape.nonZeroValues();
-            Triangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-            continue;
-        }
-        while (Triangle.checkTriangle(a,b,c)){
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Triangle(a,b,c);
+        Double[] dimens = DataValidator.validateTriangle(scanner);
+        return new Triangle(dimens[0],dimens[1],dimens[2]);
     }
 
     public static Hexagon createNewHexagon(Scanner scanner) {
-        Double a;
-        Hexagon.askForParams();
-        a = DataReader.readDouble(scanner);
-        while (a <= 0) {
-            Shape.nonZeroValues();
-            Hexagon.askForParams();
-            a = DataReader.readDouble(scanner);
-            continue;
-        }
-        return new Hexagon(a);
+        return new Hexagon(DataValidator.validateHexagon(scanner));
     }
 }

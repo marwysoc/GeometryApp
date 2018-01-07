@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class GeometryApp {
 	private Scanner scanner;
 	private List<Shape> shapes = new ArrayList<>();
-	private Double a,b,c;
 
 	public GeometryApp(Scanner scanner) {
 		this.scanner = scanner;
@@ -98,6 +97,12 @@ public class GeometryApp {
 		listShapes();
 		System.out.println("Please choose the index of the shape you want to modify (1-" + shapes.size() + "): ");
 		int index = DataReader.readInteger(scanner);
+
+        if (index < 1 || index > shapes.size()) {
+            System.out.println("There is no " + index + " element on the list.");
+            return;
+        }
+
 		Shape activeShape = shapes.get(index - 1);
 		List<Double> oldDimensions = activeShape.listDimensions();
 		Double oldPerimeter = activeShape.calculatePerimeter();
