@@ -2,6 +2,8 @@ package pl.yameo.internship.assignment;
 
 import java.util.Scanner;
 
+// Class DataValidator contains methods used validate data from user.
+
 public class DataValidator {
 
     public static Double[] validateEllipse(Scanner scanner){
