@@ -109,17 +109,17 @@ public class GeometryApp {
 		System.out.println("Perimeter: " + oldPerimeter);
 
 		if (activeShape instanceof Ellipse) {
-			modifyEllipse(activeShape);
+			ShapeModificator.modifyEllipse(activeShape, scanner);
 		} else if (activeShape instanceof Circle) {
-			modifyCircle(activeShape);
+			ShapeModificator.modifyCircle(activeShape, scanner);
 		} else if (activeShape instanceof Square) {
-			modifySquare(activeShape);
+			ShapeModificator.modifySquare(activeShape, scanner);
 		} else if (activeShape instanceof Rectangle) {
-			modifyRectangle(activeShape);
+			ShapeModificator.modifyRectangle(activeShape, scanner);
 		} else if (activeShape instanceof Triangle) {
-			modifyTriangle(activeShape);
+			ShapeModificator.modifyTriangle(activeShape, scanner);
 		} else if (activeShape instanceof Hexagon){
-			modifyHexagon(activeShape);
+			ShapeModificator.modifyHexagon(activeShape, scanner);
 		}
 
 		System.out.println("Old shape: ");
@@ -135,96 +135,6 @@ public class GeometryApp {
 		System.out.println("Perimeter: " + activeShape.calculatePerimeter());
 		System.out.println("============================");
 
-	}
-
-	private void modifyHexagon(Shape activeShape) {
-		Hexagon.askForParams();
-		a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Hexagon.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Hexagon) activeShape).setEdge(a);
-	}
-
-	private void modifyTriangle(Shape activeShape) {
-		Triangle.askForParams();
-		a = DataReader.readDouble(scanner);
-		b = DataReader.readDouble(scanner);
-		c = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0 || c <= 0) {
-			Shape.nonZeroValues();
-			Triangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-			continue;
-		}
-		while (Triangle.checkTriangle(a,b,c)){
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Triangle) activeShape).setEdgeA(a);
-		((Triangle) activeShape).setEdgeB(b);
-		((Triangle) activeShape).setEdgeC(c);
-	}
-
-	private void modifyRectangle(Shape activeShape) {
-		Rectangle.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0) {
-			Shape.nonZeroValues();
-			Rectangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Rectangle) activeShape).setHeight(a);
-		((Rectangle) activeShape).setWidth(b);
-	}
-
-	private void modifySquare(Shape activeShape) {
-		Square.askForParams();
-        a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Square.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Square) activeShape).setEdge(a);
-	}
-
-	private void modifyCircle(Shape activeShape) {
-		Circle.askForParams();
-        a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Circle.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Circle) activeShape).setRadius(a);
-	}
-
-	private void modifyEllipse(Shape activeShape) {
-		Ellipse.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0) {
-			Shape.nonZeroValues();
-			Ellipse.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-			continue;
-		}
-		((Ellipse) activeShape).setSemiMajorAxis(a);
-		((Ellipse) activeShape).setSemiMinorAxis(b);
 	}
 
 }
