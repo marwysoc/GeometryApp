@@ -38,7 +38,9 @@ public class GeometryApp {
 		} else if (option == 2) {
 			listShapes();
 		} else if (option == 3) {
-			modifyShape();
+			if (shapes.isEmpty()) {
+				System.out.println("Shape list is empty!");
+			} else modifyShape();
 		}
 
 		return true;
