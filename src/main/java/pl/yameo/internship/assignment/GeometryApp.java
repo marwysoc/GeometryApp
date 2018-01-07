@@ -59,21 +59,22 @@ public class GeometryApp {
 		int option = DataReader.readInteger(scanner);
 
 	 	if (option == 1) {
-			return createNewEllipse();
+			return ShapeCreator.createNewEllipse(scanner);
 		} else if (option == 2) {
-			return createNewRectangle();
+			return ShapeCreator.createNewRectangle(scanner);
 		} else if (option == 3) {
-			return createNewCircle();
+			return ShapeCreator.createNewCircle(scanner);
 		} else if (option == 4) {
-			return createNewSquare();
+			return ShapeCreator.createNewSquare(scanner);
 		} else if (option == 5) {
-			return createNewTriangle();
+			return ShapeCreator.createNewTriangle(scanner);
 		} else if (option == 6) {
-			return createNewHexagon();
+			return ShapeCreator.createNewHexagon(scanner);
 		} else {
 	 		return null;
 		}
 	}
+
 	private void listShapes() {
 		System.out.println("====== LIST OF SHAPES ======");
 		int i = 1;
@@ -224,93 +225,6 @@ public class GeometryApp {
 		}
 		((Ellipse) activeShape).setSemiMajorAxis(a);
 		((Ellipse) activeShape).setSemiMinorAxis(b);
-	}
-
-
-	private Ellipse createNewEllipse() {
-		Ellipse.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0) {
-			Shape.nonZeroValues();
-			Ellipse.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Ellipse(a, b);
-	}
-
-	private Rectangle createNewRectangle() {
-		Rectangle.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0) {
-			Shape.nonZeroValues();
-			Rectangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Rectangle(a, b);
-	}
-
-	private Circle createNewCircle() {
-		Circle.askForParams();
-        a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Circle.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Circle(a);
-	}
-
-	private Square createNewSquare() {
-		Square.askForParams();
-        a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Square.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Square(a);
-	}
-
-	private Triangle createNewTriangle() {
-		Triangle.askForParams();
-        a = DataReader.readDouble(scanner);
-        b = DataReader.readDouble(scanner);
-        c = DataReader.readDouble(scanner);
-		while (a <= 0 || b <= 0 || c <= 0) {
-			Shape.nonZeroValues();
-			Triangle.askForParams();
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-			continue;
-		}
-		while (Triangle.checkTriangle(a,b,c)){
-            a = DataReader.readDouble(scanner);
-            b = DataReader.readDouble(scanner);
-            c = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Triangle(a,b,c);
-	}
-
-	private Hexagon createNewHexagon() {
-		Hexagon.askForParams();
-        a = DataReader.readDouble(scanner);
-		while (a <= 0) {
-			Shape.nonZeroValues();
-			Hexagon.askForParams();
-            a = DataReader.readDouble(scanner);
-			continue;
-		}
-		return new Hexagon(a);
 	}
 
 }
