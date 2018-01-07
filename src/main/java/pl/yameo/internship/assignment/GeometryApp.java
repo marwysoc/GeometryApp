@@ -77,7 +77,7 @@ public class GeometryApp {
 		//shapes.forEach(shape -> {
 		for (Shape shape : shapes) {
 			if (shapes.size() != 0) {
-				System.out.print(i + ". " + shape.getName() + " with dimensions: ");
+				System.out.print(i + ") " + shape.getName() + " with dimensions: ");
 				System.out.print(shape.listDimensions() + "; ");
 				System.out.print("Area: " + shape.calculateArea() + "; ");
 				System.out.println("Perimeter: " + shape.calculatePerimeter());
