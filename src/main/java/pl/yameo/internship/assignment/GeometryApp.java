@@ -54,6 +54,7 @@ public class GeometryApp {
 		System.out.println("4) Square");
 		System.out.println("5) Triangle");
 		System.out.println("6) Hexagon");
+		System.out.println("7) Pentagon");
 		System.out.println("0) Back");
 		int option = DataReader.readInteger(scanner);
 
@@ -69,7 +70,9 @@ public class GeometryApp {
 			return ShapeCreator.createNewTriangle(scanner);
 		} else if (option == 6) {
 			return ShapeCreator.createNewHexagon(scanner);
-		} else {
+		} else if (option == 7) {
+	 	    return ShapeCreator.createNewPentagon(scanner);
+        } else {
 	 		return null;
 		}
 	}
@@ -125,7 +128,9 @@ public class GeometryApp {
 			ShapeModificator.modifyTriangle(activeShape, scanner);
 		} else if (activeShape instanceof Hexagon){
 			ShapeModificator.modifyHexagon(activeShape, scanner);
-		}
+		} else if (activeShape instanceof Pentagon) {
+		    ShapeModificator.modifyPentagon(activeShape, scanner);
+        }
 
 		System.out.println("Old shape: ");
 		System.out.print(activeShape.getName() + " with dimensions: ");

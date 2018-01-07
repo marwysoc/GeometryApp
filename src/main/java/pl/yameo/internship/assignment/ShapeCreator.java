@@ -32,4 +32,8 @@ public class ShapeCreator {
     public static Hexagon createNewHexagon(Scanner scanner) {
         return new Hexagon(DataValidator.validateHexagon(scanner));
     }
+
+    public static Pentagon createNewPentagon(Scanner scanner) {
+        return new Pentagon(DataValidator.validatePentagon(scanner));
+    }
 }

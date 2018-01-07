@@ -36,4 +36,8 @@ public class ShapeModificator {
     public static void modifyHexagon(Shape activeShape, Scanner scanner) {
         ((Hexagon) activeShape).setEdge(DataValidator.validateHexagon(scanner));
     }
+
+    public static void modifyPentagon(Shape activeShape, Scanner scanner) {
+        ((Pentagon) activeShape).setEdge(DataValidator.validatePentagon(scanner));
+    }
 }

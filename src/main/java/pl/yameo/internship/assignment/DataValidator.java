@@ -98,6 +98,19 @@ public class DataValidator {
         return a;
     }
 
+    public static Double validatePentagon(Scanner scanner) {
+        Double a;
+        Pentagon.askForParams();
+        a = DataReader.readDouble(scanner);
+        while (a <= 0) {
+            Shape.nonZeroValues();
+            Pentagon.askForParams();
+            a = DataReader.readDouble(scanner);
+            continue;
+        }
+        return a;
+    }
+
     public static boolean checkTriangle(Double edgeA, Double edgeB, Double edgeC) {
         if (edgeA + edgeB <= edgeC || edgeA + edgeC <= edgeB || edgeB + edgeC <= edgeA)
         {
