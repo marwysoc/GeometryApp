@@ -83,10 +83,8 @@ public class GeometryApp {
 		//shapes.forEach(shape -> {
 		for (Shape shape : shapes) {
 			if (shapes.size() != 0) {
-				System.out.print(i + ") " + shape.getName() + " with dimensions: ");
-				System.out.print(shape.listDimensions() + "; ");
-				System.out.print("Area: " + shape.calculateArea() + "; ");
-				System.out.println("Perimeter: " + shape.calculatePerimeter());
+				System.out.print(i + ") ");
+				showShapeDetails(shape);
 				i += 1;
 			} else {
 				i = 1;
@@ -111,10 +109,7 @@ public class GeometryApp {
 		Double oldPerimeter = activeShape.calculatePerimeter();
 		Double oldArea = activeShape.calculateArea();
 
-		System.out.print(activeShape.getName() + " with dimensions: ");
-		System.out.print(oldDimensions + "; ");
-		System.out.print("Area: " + oldArea + "; ");
-		System.out.println("Perimeter: " + oldPerimeter);
+		showShapeDetails(activeShape);
 
 		if (activeShape instanceof Ellipse) {
 			ShapeModificator.modifyEllipse(activeShape, scanner);
@@ -139,12 +134,15 @@ public class GeometryApp {
 		System.out.println("Perimeter: " + oldPerimeter);
 		System.out.println("============================");
 		System.out.println("New shape: ");
-		System.out.print(activeShape.getName() + " with dimensions: ");
-		System.out.print(activeShape.listDimensions() + "; ");
-		System.out.print("Area: " + activeShape.calculateArea() + "; ");
-		System.out.println("Perimeter: " + activeShape.calculatePerimeter());
+		showShapeDetails(activeShape);
 		System.out.println("============================");
 
 	}
 
+	private void showShapeDetails(Shape shape) {
+		System.out.print(shape.getName() + " with dimensions: ");
+		System.out.print(shape.listDimensions() + "; ");
+		System.out.print("Area: " + shape.calculateArea() + "; ");
+		System.out.println("Perimeter: " + shape.calculatePerimeter());
+	}
 }

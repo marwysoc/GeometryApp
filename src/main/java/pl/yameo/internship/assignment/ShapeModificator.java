@@ -21,7 +21,7 @@ public class ShapeModificator {
     }
 
     public static void modifyRectangle(Shape activeShape, Scanner scanner) {
-        Double[] dimens = DataValidator.validateEllipse(scanner);
+        Double[] dimens = DataValidator.validateRectangle(scanner);
         ((Rectangle) activeShape).setHeight(dimens[0]);
         ((Rectangle) activeShape).setWidth(dimens[1]);
     }
