@@ -71,15 +71,22 @@ public class GeometryApp {
 	 		return null;
 		}
 	}
-
 	private void listShapes() {
 		System.out.println("====== LIST OF SHAPES ======");
-		shapes.forEach(shape -> {
-			System.out.print(shape.getName() + " with dimensions: ");
-			System.out.print(shape.listDimensions() + "; ");
-			System.out.print("Area: " + shape.calculateArea() + "; ");
-			System.out.println("Perimeter: " + shape.calculatePerimeter());
-		});
+		int i = 1;
+		//shapes.forEach(shape -> {
+		for (Shape shape : shapes) {
+			if (shapes.size() != 0) {
+				System.out.print(i + ". " + shape.getName() + " with dimensions: ");
+				System.out.print(shape.listDimensions() + "; ");
+				System.out.print("Area: " + shape.calculateArea() + "; ");
+				System.out.println("Perimeter: " + shape.calculatePerimeter());
+				i += 1;
+			} else {
+				i = 1;
+			}
+		}
+		//});
 		System.out.println("============================");
 	}
 
